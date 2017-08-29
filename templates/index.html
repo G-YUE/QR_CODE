@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="width: 370px;height: 370px;background-color: antiquewhite;margin: 0 auto;">
+    <img src="" alt="" id="erweima" style="width: 370px;height: 370px">
+</div>
+</body>
+<script src="/static/jquery-3.2.1.js"></script>
+<script>
+    $(function () {
+        $.ajax(
+            {
+                url: "/erweima/",
+                type: "GET",
+                dataType: "JSON",
+                success: function (res) {
+                    var equel = res["req"];
+                    var img_url = res["url"];
+                    $("#erweima").attr("src", img_url);
+                    wait(equel);
+                    dingshi = setInterval(function () {wait(equel)}, 2000)
+                }
+            }
+        )
+        function wait(equel) {
+            $.ajax(
+                {
+                    url: "/erweima/",
+                    type: "POST",
+                    data: {"req": equel},
+                    dataType: "JSON",
+                    success: function (res) {
+                        if (res.status) {
+                            if (res.msg != null) {
+                                var img_url = res.msg;
+                                $("#erweima").attr("src", img_url)
+                                clearInterval(dingshi);
+                            }
+                        }
+                        else {
+                            if(res.msg != null) {
+                                clearInterval(dingshi);
+                                alert(res.msg)
+                            }
+                        }
+                    }
+                }
+            )
+        }
+    })
+</script>
+</html>
