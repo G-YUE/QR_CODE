@@ -124,6 +124,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=(
     os.path.join(BASE_DIR,'static'),
 )
-IMG_URL="http://192.168.31.233:8000/static/img/"
-LOGIN_URL="http://192.168.31.233:8000/login/?mg="
-BASE_URL="http://192.168.31.233:8000/"
+IMG_URL="http://101.220.50.238:9000/static/img/"
+LOGIN_URL="http://101.220.50.238:9000/login/?mg="
+BASE_URL="http://101.220.50.238:9000/"
