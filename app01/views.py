@@ -5,7 +5,7 @@ from app01 import models
 # Create your views here.
 def login(request):
     if request.method=="GET":
-        return render(request,"login.html")
+        return render(request, "login.html")
     else:
         erweima=request.GET.get('mg')
         username=request.POST.get("username")
